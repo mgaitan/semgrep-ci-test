@@ -1,3 +1,4 @@
+rules:
 - id: basic-rule-to-test-if-it-is-working
   languages:
     - python
