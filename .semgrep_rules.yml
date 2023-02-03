@@ -1,0 +1,6 @@
+- id: basic-rule-to-test-if-it-is-working
+  languages:
+    - python
+  message: The operator 'is' is for reference equality, not value equality! Use `==` instead!
+  pattern: $SOMEVAR is "..."
+  severity: ERROR
