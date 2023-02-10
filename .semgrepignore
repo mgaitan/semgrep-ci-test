@@ -1,0 +1,25 @@
+# this is the default .semgrepignore file except it allows test/ tests/ folders
+# https://semgrep.dev/docs/ignoring-files-folders-code/#understanding-semgrep-defaults
+
+# Common large paths
+node_modules/
+build/
+dist/
+vendor/
+.env/
+.venv/
+.tox/
+*.min.js
+.npm/
+
+# Common test paths
+# test/
+# tests/
+
+
+# Semgrep rules folder
+.semgrep
+.semgrep_rules.yml
+
+# Semgrep-action log folder
+.semgrep_logs/
