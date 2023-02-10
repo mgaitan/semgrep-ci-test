@@ -21,8 +21,14 @@ jobs:
     steps:
       # Fetch project source with GitHub Actions Checkout.
       - uses: actions/checkout@v3
+      # Patch semgrep https://github.com/returntocorp/semgrep/issues/7073
+      - run: |
+          CI_MOD=`python -c "import semgrep.commands.ci; print(semgrep.commands.ci.__file__)"`
+          echo $CI_MOD
+          sed -i 's/DEFAULT_EXCLUDE_PATTERNS =.*/DEFAULT_EXCLUDE_PATTERNS = \[\]/g' $CI_MOD
+
       # Run the "semgrep ci" command on the command line of the docker image.
-      - run: semgrep ci --verbose
+      - run: semgrep ci
         env:
            # Add the rules that Semgrep uses by setting the SEMGREP_RULES environment variable. 
            SEMGREP_RULES: .semgrep_rules.yml # more at semgrep.dev/explore
